@@ -1,0 +1,39 @@
+<div class="container mt-3">
+  <p class="fs-4">Registro de contactos</p>
+  <div class="mb-3">
+    <ion-icon name="person"></ion-icon> &nbsp;<label for="exampleFormControlInput1" class="form-label">Nombre</label> 
+    <input [(ngModel)]="name" type="text" class="form-control" id="exampleFormControlInput1" placeholder="John Doe">
+  </div>
+  <div class="mb-3">
+    <ion-icon name="mail"></ion-icon> &nbsp;<label for="exampleFormControlInput2" class="form-label">Email</label> 
+    <input [(ngModel)]="email" type="email" class="form-control" id="exampleFormControlInput2" placeholder="name@example.com">
+  </div>
+  <div class="mb-3">
+    <ion-icon name="call"></ion-icon> &nbsp;<label for="exampleFormControlInput3" class="form-label">Telefono</label> 
+    <input [(ngModel)]="phone" type="phone" class="form-control" id="exampleFormControlInput3" placeholder="00-00-00-00-00">
+  </div>
+  <button type="button" class="btn btn-dark btn-lg w-100" (click)="saveContact()">Guardar</button>
+
+  <p class="fs-4 mt-5">Lista de contactos</p>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Nombre</th>
+        <th scope="col">Email</th>
+        <th scope="col">Telefono</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let contact of contactList; let i = index">
+        <th scope="row">{{contact.name}}</th>
+        <td>{{contact.email}}</td>
+        <td>{{contact.phone}}</td>
+        <td class="text-end"><button type="button" class="btn btn-secondary" (click)="deleteContact(i)">X</button></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <button type="button" class="btn btn-success btn-lg w-100" (click)="exportContactsExcel()">Exportar &nbsp; <i class="bi bi-table"></i></button>
+  
+</div>
